@@ -1,11 +1,13 @@
 import { gql } from "apollo-boost";
 import React from "react";
 import { useQuery } from "react-apollo-hooks";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import styled, { ThemeProvider } from "styled-components";
 import GlobalStyles from "../styles/GlobalStyles";
 import Theme from "../styles/Theme";
-import Router from "./Router";
 import Footer from "./Footer";
+import Router from "./Router";
 
 const QUERY = gql`
   {
@@ -30,6 +32,7 @@ export default () => {
         <GlobalStyles />
         <Router isLoggedIn={isLoggedIn} />
         <Footer />
+        <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
       </Wrapper>
     </ThemeProvider>
   );

@@ -53,37 +53,47 @@ export default ({
   firstname,
   lastname,
   email,
-  onLogin
+  secret,
+  onSubmit
 }) => (
   <Wrapper>
     <Form>
-      {"logIn" === action ? (
-        <form onSubmit={onLogin}>
+      {"logIn" === action && (
+        <form onSubmit={onSubmit}>
           <Input placeholder={"Email"} {...email} type="email" />
           <Button text={"Log in"} />
         </form>
-      ) : (
-        <form onSubmit={onLogin}>
-          <Input placeholder={"First name"} {...firstname} />
-          <Input placeholder={"Last name"} {...lastname} />
-          <Input placeholder={"Email"} {...email} type="email" />
-          <Input placeholder={"Username"} {...username} />
-          <Button text={"Sign up"} />
+      )}
+      {"signUp" === action && (
+        <form onSubmit={onSubmit}>
+          <Input placeholder="First name" {...firstname} />
+          <Input placeholder="Last name" {...lastname} />
+          <Input placeholder="Email" {...email} type="email" />
+          <Input placeholder="Username" {...username} />
+          <Button text="Sign up" />
+        </form>
+      )}
+      {"confirm" === action && (
+        <form onSubmit={onSubmit}>
+          <Input placeholder="Secret" required {...secret} />
+          <Button text="Confirm" />
         </form>
       )}
     </Form>
-    <StateChanger>
-      {"logIn" === action ? (
-        <>
-          "Don't have an account?{" "}
-          <Link onClick={() => setAction("signUp")}>Sign up</Link>"
-        </>
-      ) : (
-        <>
-          "Have an account?{" "}
-          <Link onClick={() => setAction("logIn")}>Log in</Link>"
-        </>
-      )}
-    </StateChanger>
+    {"confirm" !== action && (
+      <StateChanger>
+        {"logIn" === action ? (
+          <>
+            "Don't have an account?{" "}
+            <Link onClick={() => setAction("signUp")}>Sign up</Link>"
+          </>
+        ) : (
+          <>
+            "Have an account?{" "}
+            <Link onClick={() => setAction("logIn")}>Log in</Link>"
+          </>
+        )}
+      </StateChanger>
+    )}
   </Wrapper>
 );
