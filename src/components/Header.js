@@ -1,11 +1,11 @@
 import React from "react";
+import { useQuery } from "react-apollo-hooks";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import useInput from "../hooks/useInput";
+import { ME } from "../SharedQueries";
+import { Compass, HeartEmpty, Logo, User } from "./Icons";
 import Input from "./Input";
-import { Compass, HeartEmpty, User, Logo } from "./Icons";
-import { gql } from "apollo-boost";
-import { useQuery } from "react-apollo-hooks";
 
 const Header = styled.header`
   width: 100%;
@@ -20,6 +20,7 @@ const Header = styled.header`
   justify-content: center;
   align-items: center;
   padding: 25px 0px;
+  z-index: 2;
 `;
 
 const HeaderWrapper = styled.div`
@@ -62,14 +63,6 @@ const HeaderLink = styled(Link)`
   }
 `;
 
-const ME = gql`
-  query {
-    me {
-      username
-    }
-  }
-`;
-
 export default withRouter(({ history }) => {
   const search = useInput("");
   const { data } = useQuery(ME);
@@ -88,20 +81,20 @@ export default withRouter(({ history }) => {
         </HeaderColumn>
         <HeaderColumn>
           <form onSubmit={onSearchSubmit}>
-            <SearchInput {...search} placeholder="Search" />
+            <SearchInput
+              value={search.value}
+              onChange={search.onChange}
+              placeholder="Search"
+            />
           </form>
         </HeaderColumn>
         <HeaderColumn>
           <HeaderLink to="/explore">
             <Compass />
           </HeaderLink>
-        </HeaderColumn>
-        <HeaderColumn>
           <HeaderLink to="/notifications">
             <HeartEmpty />
           </HeaderLink>
-        </HeaderColumn>
-        <HeaderColumn>
           <HeaderLink to={!data?.me?.username ? "/#" : `/${data.me.username}`}>
             <User />
           </HeaderLink>

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+import Helmet from "react-helmet";
 
 const Wrapper = styled.div`
   min-height: 80vh;
@@ -59,25 +60,40 @@ export default ({
   <Wrapper>
     <Form>
       {"logIn" === action && (
-        <form onSubmit={onSubmit}>
-          <Input placeholder={"Email"} {...email} type="email" />
-          <Button text={"Log in"} />
-        </form>
+        <>
+          <Helmet>
+            <title>Log In | Prismagram</title>
+          </Helmet>
+          <form onSubmit={onSubmit}>
+            <Input placeholder={"Email"} {...email} type="email" />
+            <Button text={"Log in"} />
+          </form>
+        </>
       )}
       {"signUp" === action && (
-        <form onSubmit={onSubmit}>
-          <Input placeholder="First name" {...firstname} />
-          <Input placeholder="Last name" {...lastname} />
-          <Input placeholder="Email" {...email} type="email" />
-          <Input placeholder="Username" {...username} />
-          <Button text="Sign up" />
-        </form>
+        <>
+          <Helmet>
+            <title>Sign Up | Prismagram</title>
+          </Helmet>
+          <form onSubmit={onSubmit}>
+            <Input placeholder="First name" {...firstname} />
+            <Input placeholder="Last name" {...lastname} />
+            <Input placeholder="Email" {...email} type="email" />
+            <Input placeholder="Username" {...username} />
+            <Button text="Sign up" />
+          </form>
+        </>
       )}
       {"confirm" === action && (
-        <form onSubmit={onSubmit}>
-          <Input placeholder="Secret" required {...secret} />
-          <Button text="Confirm" />
-        </form>
+        <>
+          <Helmet>
+            <title>Confirm Secret | Prismagram</title>
+          </Helmet>
+          <form onSubmit={onSubmit}>
+            <Input placeholder="Secret" required {...secret} />
+            <Button text="Confirm" />
+          </form>
+        </>
       )}
     </Form>
     {"confirm" !== action && (

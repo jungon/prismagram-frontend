@@ -15,7 +15,7 @@ export default () => {
   const username = useInput("");
   const firstname = useInput("");
   const lastname = useInput("");
-  const email = useInput("j017.kim@gmail.com");
+  const email = useInput("");
   const secret = useInput("");
   const [requestSecretMutation] = useMutation(LOG_IN, {
     variables: { email: email.value }
