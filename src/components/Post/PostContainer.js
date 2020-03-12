@@ -28,7 +28,7 @@ const PostContainer = ({
   const [currentItem, setCurrentItem] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timerId = setTimeout(() => {
       const totalFiles = files.length;
       if (currentItem === totalFiles - 1) {
         setCurrentItem(0);
@@ -36,6 +36,10 @@ const PostContainer = ({
         setCurrentItem(currentItem + 1);
       }
     }, 3000);
+
+    return () => {
+      clearTimeout(timerId);
+    };
   }, [currentItem, files.length]);
 
   const [toggleLikeMutationFn] = useMutation(TOGGLE_LIKE, {

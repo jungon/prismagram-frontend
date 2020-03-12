@@ -3,7 +3,7 @@ import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
 import styled from "styled-components";
 import Loader from "../components/Loader";
-import Post from "../components/Post";
+import Post from "../components/post";
 import Helmet from "react-helmet";
 
 const FEED_QUERY = gql`

@@ -8,7 +8,7 @@ import TextareaAutosize from "react-autosize-textarea";
 const Post = styled.div`
   ${props => props.theme.whiteBox};
   width: 100%;
-  max-width: 600px;
+  max-width: 750px;
   margin-bottom: 25px;
   use-select: none;
 `;
