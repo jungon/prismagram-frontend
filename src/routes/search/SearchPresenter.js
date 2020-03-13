@@ -4,7 +4,7 @@ import FatText from "../../components/FatText";
 import styled from "styled-components";
 import Loader from "../../components/Loader";
 import UserCard from "../../components/UserCard";
-import Post from "../../components/Post";
+import SquarePost from "../../components/SquarePost";
 
 const Wrapper = styled.div`
   height: 50vh;
@@ -62,7 +62,7 @@ const SearchPresenter = ({ term, loading, data }) => {
             <FatText text="No posts found"></FatText>
           ) : (
             data.searchPost.map((post, idx) => (
-              <Post
+              <SquarePost
                 key={idx}
                 likeCount={post.likeCount}
                 commentCount={post.commentCount}

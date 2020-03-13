@@ -4,6 +4,7 @@ import Avatar from "../Avatar";
 import FatText from "../FatText";
 import { HeartFull, HeartEmpty, Comment as CommentIcon } from "../Icons";
 import TextareaAutosize from "react-autosize-textarea";
+import { Link } from "react-router-dom";
 
 const Post = styled.div`
   ${props => props.theme.whiteBox};
@@ -11,6 +12,9 @@ const Post = styled.div`
   max-width: 750px;
   margin-bottom: 25px;
   use-select: none;
+  a {
+    color: inherit;
+  }
 `;
 
 const Header = styled.header`
@@ -119,6 +123,7 @@ const PostPresenter = ({
       <Header>
         <Avatar url={avatar} />
         <UserColumn>
+          <Link to={`/${username}`} />
           <FatText text={username} />
           <Location>{location}</Location>
         </UserColumn>

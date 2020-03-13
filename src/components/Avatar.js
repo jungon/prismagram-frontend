@@ -23,6 +23,7 @@ const Container = styled.div`
   ${props => getSize(props.size)};
   background-image: url(${props => props.url});
   background-size: cover;
+  background-position: center;
   border-radius: 50%;
 `;
 
